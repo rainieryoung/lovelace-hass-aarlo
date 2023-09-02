@@ -497,8 +497,8 @@ class AarloGlance extends HTMLElement {
     __state( element, state ) {
         let color = ""
         switch( state ) {
-            case "device-on":
-              color =  "var(--state-binary-sensor-color, white)"
+            case "state-active":
+              color =  "var(--state-camera-active-color, white)"
               break
             case "on":
             case "state-on":
@@ -797,9 +797,9 @@ class AarloGlance extends HTMLElement {
             } else if ( this.cs.state === "recently active") {
                 this.cs.details.statusIcon = _tsi(`Status: ${this.cs.state}`, 'on', 'mdi:walk')
             } else if ( this.cs.state === 'recording' ) {
-                this.cs.details.statusIcon = _tsi(`Status: ${this.cs.state}`, 'device-on', 'mdi:run-fast')
+                this.cs.details.statusIcon = _tsi(`Status: ${this.cs.state}`, 'state-active', 'mdi:run-fast')
             } else if ( this.cs.state === 'streaming' ) {
-                this.cs.details.statusIcon = _tsi(`Status: ${this.cs.state}`, 'device-on', 'mdi:eye')
+                this.cs.details.statusIcon = _tsi(`Status: ${this.cs.state}`, 'state-active', 'mdi:eye')
             } else if ( this.cs.state === "offline, too cold") {
                 this.cs.details.statusIcon = _tsi(`Status: ${this.cs.state}`, '', 'mdi:thermometer-chevron-down')
             } else {
@@ -957,7 +957,7 @@ class AarloGlance extends HTMLElement {
             const is_on = lightState.state === 'on'
             this.cs.details.light = _tsi(
                 `${lightState.attributes.friendly_name}: ` + (is_on ?  this._i.status.light_on : this._i.status.light_off),
-                is_on ? 'device-on' : '',
+                is_on ? 'state-active' : '',
                 'mdi:lightbulb'
             )
         }
@@ -966,7 +966,7 @@ class AarloGlance extends HTMLElement {
             const is_on = lightState.state === 'on'
             this.cs.details.light2 = _tsi(
                 `${lightState.attributes.friendly_name}: ` + (is_on ?  this._i.status.light_on : this._i.status.light_off),
-                is_on ? 'device-on' : '',
+                is_on ? 'state-active' : '',
                 'mdi:lightbulb'
             )
         }

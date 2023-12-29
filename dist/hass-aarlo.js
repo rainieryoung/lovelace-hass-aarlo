@@ -883,7 +883,7 @@ class AarloGlance extends HTMLElement {
             const is_open   = doorState.state === 'on'
             this.cs.details.door = _tsi(
                 `${doorState.attributes.friendly_name}: ${is_open ? this._i.status.door_open : this._i.status.door_closed}`,
-                is_open ? 'on' : '',
+                is_open ? 'state-active' : '',
                 is_open ? 'mdi:door-open' : 'mdi:door',
             )
         }
@@ -892,7 +892,7 @@ class AarloGlance extends HTMLElement {
             const is_open   = doorState.state === 'on'
             this.cs.details.door2 = _tsi(
                 `${doorState.attributes.friendly_name}: ${is_open ? this._i.status.door2_open : this._i.status.door2_closed}`,
-                is_open ? 'on' : '',
+                is_open ? 'state-active' : '',
                 is_open ? 'mdi:door-open' : 'mdi:door',
             )
         }
@@ -922,7 +922,7 @@ class AarloGlance extends HTMLElement {
             const mute = bell.attributes.chimes_silenced || bell.attributes.calls_silenced
             const muteable = !!this.cc.doorBellMuteId
             if ( bell.state === 'on' ) {
-                this.cs.details.bell = _tsi(`${name}: ${this._i.status.doorbell_pressed}`, 'on', 'mdi:bell-ring')
+                this.cs.details.bell = _tsi(`${name}: ${this._i.status.doorbell_pressed}`, 'state-active', 'mdi:bell-ring')
             } else if( muteable ) {
                 if ( mute ) {
                     this.cs.details.bell = _tsi(`${name}: ${this._i.status.doorbell_muted}`, 'warn', 'mdi:bell-off')
@@ -940,7 +940,7 @@ class AarloGlance extends HTMLElement {
             const mute = bell.attributes.chimes_silenced || bell.attributes.calls_silenced
             const muteable = !!this.cc.door2BellMuteId
             if ( bell.state === 'on' ) {
-                this.cs.details.bell2 = _tsi(`${name}: ${this._i.status.doorbell_pressed}`, 'on', 'mdi:bell-ring')
+                this.cs.details.bell2 = _tsi(`${name}: ${this._i.status.doorbell_pressed}`, 'state-active', 'mdi:bell-ring')
             } else if( muteable ) {
                 if ( mute ) {
                     this.cs.details.bell2 = _tsi(`${name}: ${this._i.status.doorbell_muted}`, 'warn', 'mdi:bell-off')

@@ -3,7 +3,6 @@
 ## Modifications
 This fork changes the following:
 
-
 Modified `__state()` 
 1. Differentiate devices from camera controls
    1. Introduce `state-active` for devices (lights, doors, and when the camera is actively Streaming or Recording) to separate those from the standard white/grey theme for camera controls
@@ -24,7 +23,13 @@ Changes to "Status Details" (icons and text)
 3. **NEW** `cs.details.statusicon` added to communicate camera state via an icon
 4. `cs.details.battery` fixed battery level warning/error thresholds (https://github.com/twrecked/lovelace-hass-aarlo/pull/149)
 5. `cs.details.library` use 'mdi:camera-burst' icon
+6. `cs.details.door` and `cs.details.door2` pass `state-active` to __state() instead of `on`
+7. `cs.details.bell` and `cs.details.bell2` pass `state-active` to __state() instead of `on`
 6. `cs.details.light` and `cs.details.light2` pass `state-active` to __state() instead of `on` 
+
+Example: 
+<img width="428" alt="image" src="https://github.com/twrecked/lovelace-hass-aarlo/assets/24948184/503acbde-9b6a-4abd-9557-fba23360efac">
+
 
 ## Version 0.3
 

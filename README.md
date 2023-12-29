@@ -1,5 +1,31 @@
 # lovelace-hass-arlo
 
+## Modifications
+This fork changes the following:
+
+
+Modified `__state()` 
+1. Differentiate devices from camera controls
+   1. Introduce `state-active` for devices (lights, doors, and when the camera is actively Streaming or Recording) to separate those from the standard white/grey theme for camera controls
+   2. `state-active` uses `--state-camera-active-color` as a custom var, which can be set in the HomeAssistant Themes
+   3. Camera controls continue to use White for `state-on`, Light Grey for `state-update`, and Dark Grey `state-off` 
+2. Minor changes to Error and Warning colors
+   1. `state-error` is now `var(--error-color, red)`, was previously `red`
+   2. `state-warn` is now `var(--warning-color, orange)`, was previously `orange` 
+
+Modified `__text()`
+1. Use state to substiutue the last activity datetime with _Streaming_ or _Recording_. At least for me, this means I don't need both last activity and status. This element now does both.
+2. When "active" (Streaming or Recording) set the color of the text to `--state-binary-sensor-color` (theme's active color)
+3. When "too cold" set the color of the text to `#a9a9a9` though this should be updated to a theme var for consistency
+
+Changes to "Status Details" (icons and text)
+1. `cs.details.stream` use state `''` instead of `on` when _Streaming_
+2. `cs.details.onoff` use 'mdi:power' icon
+3. **NEW** `cs.details.statusicon` added to communicate camera state via an icon
+4. `cs.details.battery` fixed battery level warning/error thresholds (https://github.com/twrecked/lovelace-hass-aarlo/pull/149)
+5. `cs.details.library` use 'mdi:camera-burst' icon
+6. `cs.details.light` and `cs.details.light2` pass `state-active` to __state() instead of `on` 
+
 ## Version 0.3
 
 ### **Be warned, 0.3 is in alpha**
